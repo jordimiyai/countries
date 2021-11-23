@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -10,10 +9,11 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.STRING,
         primaryKey: true,
+        allowNull: false,
         validate: {
           isAlpha: true,
           len: [3],
-          notNull: {msg: 'Cannot be null'},
+          notNull: { msg: "Cannot be null" },
         },
       },
       name: {
@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           isAlpha: { ignore: "\s" },
-          notNull: {msg: 'Cannot be null'},
+          notNull: { msg: "Cannot be null" },
           notEmpty: true,
           notBlank: true,
         },
@@ -29,16 +29,17 @@ module.exports = (sequelize) => {
       flag: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
-          notNull: {msg: 'Cannot be null'},
-        }
+        validate: {
+          notNull: { msg: "Cannot be null" },
+          isUrl: true,
+        },
       },
       capital: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isAlpha: (true, { ignore: "\s" }),
-          notNull: {msg: 'Cannot be null'},
+          isAlpha: (true, { ignore: "s" }),
+          notNull: { msg: "Cannot be null" },
           notEmpty: true,
           notBlank: true,
         },
