@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const { STRING } = require("sequelize/lib/data-types");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -20,7 +21,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isAlpha: { ignore: "\s" },
+          isAlpha: { ignore: "s" },
           notNull: { msg: "Cannot be null" },
           notEmpty: true,
           notBlank: true,
@@ -42,6 +43,13 @@ module.exports = (sequelize) => {
           notNull: { msg: "Cannot be null" },
           notEmpty: true,
           notBlank: true,
+        },
+      },
+      continent: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Cannot be null" },
         },
       },
       subregion: {

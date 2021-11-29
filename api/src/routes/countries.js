@@ -1,25 +1,22 @@
 const { Router } = require("express");
-const axios = require("axios");
-
 const router = Router();
+const Joi = require("joi");
+const validator = require("express-joi-validation").createValidator({});
+const { getCountriesDB, getCountriesById } = require("./controllers/countries");
+// makes the request to de api and saves a raw version of the results
 
-// me devuelve los datos de paises de la api
-
-const getCountries = async function () {
-  try {
-    const countries = await axios.get("https://restcountries.com/v3/all");
-    return countries.data;
-  } catch (e) {
-    console.log("Error getting countries", e);
-  }
-};
-
-router.get("/", function (req, res, next) {
-  res.send("soy get countries");
+const querySchema = Joi.object({
+  name: Joi.string().regex(/^[a-zA-Z\s]+$/),
 });
 
-router.get("/:id", function (req, res, next) {
-  res.send("soy get countries por id");
+const paramsSchema = Joi.object({
+  id: Joi.string()
+    .regex(/^[a-zA-Z]+$/)
+    .length(3),
 });
+
+router.get("/", validator.query(querySchema), getCountriesDB);
+
+router.get("/:id", validator.params(paramsSchema), getCountriesById);
 
 module.exports = router;
