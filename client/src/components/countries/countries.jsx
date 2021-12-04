@@ -1,4 +1,5 @@
 import "./countries.css";
+import React from "react";
 import Country from "../country/country";
 
 export default function Countries(props) {
@@ -6,7 +7,7 @@ export default function Countries(props) {
   return (
     <div className="Countries">
       {countries.length ? (
-        countries.map((country) => {
+        countries && countries.map((country) => {
           return <Country key={country.id} country={country} />;
         })
       ) : (

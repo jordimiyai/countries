@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addActivity } from "../../store/actions";
+import NavBar from '../navBar/navBar'
+
 
 export default function NewActivity() {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ export default function NewActivity() {
   }
 
   return <div>
+    <NavBar/>
     <h1>New activity</h1>
     <h2>Help us adding your traveling expertise</h2>
     <form onSubmit={handleSubmit}>      

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { COUNTRIES_URL } from "../../store/constants";
+import NavBar from "../navBar/navBar";
 
 export default function Detail() {
   const [country, setCountry] = useState(null);
@@ -20,6 +21,8 @@ export default function Detail() {
   }, []);
 
   return (
+    <div>
+      <NavBar/>
     <div className="detail">
       {country ? (
         <>
@@ -36,9 +39,7 @@ export default function Detail() {
           <div>
             <div>
               Activities:{" "}
-              {country.activities.length
-                ? ""
-                : country.name + " has no activities yet"}
+              {country.activities.length ? "" : country.name + " has no activities yet"}
             </div>
             <div>
               {country.activities.map((activity) => {
@@ -57,6 +58,7 @@ export default function Detail() {
       ) : (
         <>Loading...</>
       )}
+    </div>
     </div>
   );
 }

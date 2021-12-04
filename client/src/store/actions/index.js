@@ -3,6 +3,8 @@ import { ACTIVITY_URL, COUNTRIES_URL } from "../constants";
 export const FETCH_COUNTRIES = "FETCH_COUNTRIES";
 export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES';
 export const ADD_ACTIVITIES = 'ADD_ACTIVITIES';
+export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
+export const ORDER_BY = 'ORDER_BY';
 
 
 export function fetchCountries() {
@@ -46,5 +48,18 @@ export function addActivity(payload){
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export function filterByContinent(payload){
+  return{
+    type: FILTER_BY_CONTINENT,
+    payload
+  }
+}
+export function orderBy(payload){
+  return{
+    type: ORDER_BY,
+    payload
   }
 }
