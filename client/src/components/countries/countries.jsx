@@ -1,20 +1,22 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchCountries } from '../../store/actions'
+import "./countries.css";
 import Country from "../country/country";
 
-export default function Countries(){
-    let countries = useSelector((state) => state.countries)
-    let dispatch = useDispatch();
-    useEffect(()=> {
-        dispatch(fetchCountries())
-    }, [])
-    console.log(countries)
-
-    return <div className='Countries'>
-        
-    {countries.map((country) => {
-        return <Country key={country.id} nation={country}/>
-    })}
-     </div>
+export default function Countries(props) {
+  const { countries } = props;
+  return (
+    <div className="Countries">
+      {countries.length ? (
+        countries.map((country) => {
+          return <Country key={country.id} country={country} />;
+        })
+      ) : (
+        <div class="spinner">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+        </div>
+      )}
+    </div>
+  );
 }
+
+// pagina grande tendria que traerse los paises, hacer los filtros

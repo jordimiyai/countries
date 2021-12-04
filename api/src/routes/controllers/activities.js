@@ -4,7 +4,7 @@ const { Activity } = require('../../db');
 const createActivity = async function(req, res, next) {
     try {
       const { name, difficulty, duration, season, countries } = req.body;
-  
+      
       let newActivity = await Activity.create({
         name,
         difficulty,
@@ -13,9 +13,9 @@ const createActivity = async function(req, res, next) {
       });
       await newActivity.addCountry(countries);
   
-      res.json(newActivity);
+      res.send('Activity created');
     } catch (e) {
-      next(error);
+      next(e);
     }
 }
 

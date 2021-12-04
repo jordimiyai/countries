@@ -1,0 +1,16 @@
+.externalCard{
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    width: 14rem;
+    margin: 1rem;
+    justify-content: center;
+    border-radius: 0.2rem;
+}
+
+img{
+    margin: 0.3rem;
+    width: 12rem;
+    height: 6rem;
+
+}

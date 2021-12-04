@@ -34,12 +34,13 @@ const getCountriesById = function (req, res, next) {
   const { id } = req.params;
   try {
     let countryById = Country.findByPk(id.toUpperCase(), {
-      include: {
-        model: Activity,
-        attributes: ["name"],
-        through: {
-          attributes: [],
+      include: [
+        {
+          model: Activity,
         },
+      ],
+      attributes: {
+        exclude: ["country_activity"],
       },
     });
 

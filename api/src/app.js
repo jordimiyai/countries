@@ -5,8 +5,7 @@ const routes = require('./routes/index.js');
 require('./db.js');
 const {initialLoadDB} = require('./services/index');
 
-// initial load to the data base
-initialLoadDB();
+
 
 const server = express();
 
@@ -25,6 +24,9 @@ server.use((req, res, next) => {
 });
 
 server.use('/api', routes);
+
+// initial load to the data base
+initialLoadDB();
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
