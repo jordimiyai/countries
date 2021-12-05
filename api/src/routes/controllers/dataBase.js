@@ -1,5 +1,6 @@
 const axios = require("axios");
-const { Country } = require("../db");
+const { Country, Activity } = require("../../db");
+const { getActivities } = require("./activities");
 
 
 const getCountriesFromApi = async function () {
@@ -37,13 +38,24 @@ const formatCountries = function (countries) {
   return formatedCountries;
 };
 
+const loadActivities = async function(){
+  let activities = getActivities()
+  activities.map( async function(activ){
+    let newActivity = await Activity.create(activ);
+    await newActivity.addCountry(activ.countries);
+    }
+  )
+}
 
-//saves the countries with a the format needed in the database
+
+//saves the countries with a the format needed in the database and adds a few activities
 const createDB = async function () {
   let countriesRaw = await getCountriesFromApi();
   let formated = formatCountries(countriesRaw);
-  Country.bulkCreate(formated);
-  console.log('DB created')
+  await Country.bulkCreate(formated);
+  console.log('Countries Loaded')
+  loadActivities();
+  console.log('Activities Loaded')
   return;
 };
 

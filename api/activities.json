@@ -1,0 +1,22 @@
+[   {
+"name": "Sky",
+"difficulty": 2,
+"duration": 1, 
+"season":"Winter", 
+"countries":["DEU", "ARG", "AUS", "BEL", "CAN", "USA", "FRA", "IRL", "ITA", "PRT", "CHE"]
+},
+{
+"name": "Surfing",
+"difficulty": 3,
+"duration": 5, 
+"season":"Summer", 
+"countries":["IDN", "CRI", "MAR", "NIC", "PRT", "USA", "AUS", "MEX"]
+},
+{
+"name": "Trekking",
+"difficulty": 1,
+"duration": 1, 
+"season":"Spring", 
+"countries":["ARG", "CHL", "COL", "NZL", "USA", "PER", "DEU", "VEN", "NOR", "AUS"]
+}
+]

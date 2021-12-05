@@ -1,4 +1,5 @@
 const { Activity } = require('../../db');
+const fs = require('fs');
 
 
 const createActivity = async function(req, res, next) {
@@ -19,6 +20,19 @@ const createActivity = async function(req, res, next) {
     }
 }
 
+
+// I created a file with some activities to have preloaded
+const getActivities = function(){
+  let rawdata = fs.readFileSync('activities.json');
+  // dar formato y devolver 
+  let activities = JSON.parse(rawdata);
+  console.log(activities)
+
+  return activities
+}
+
+
 module.exports={
     createActivity,
+    getActivities,
 }

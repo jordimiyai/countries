@@ -2,8 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const { initialLoadDB } = require('./routes/controllers/dataBase.js');
 require('./db.js');
-const {initialLoadDB} = require('./services/index');
 
 
 
