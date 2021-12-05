@@ -7,13 +7,12 @@ export default function Countries(props) {
   return (
     <div className="Countries">
       {countries.length ? (
-        countries && countries.map((country) => {
+        countries.map((country) => {
           return <Country key={country.id} country={country} />;
         })
       ) : (
-        <div class="spinner">
-          <div class="cube1"></div>
-          <div class="cube2"></div>
+        <div >
+       <h3>Sorry, No countries available</h3>
         </div>
       )}
     </div>

@@ -3,6 +3,8 @@ import Search from "../search/search";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchCountries } from "../../store/actions";
+import Continent from "./filterContinents";
+import OrderBy from "./orderBy";
 
 
 export default function NavBar() {
@@ -11,6 +13,7 @@ export default function NavBar() {
   function handleClick() {
     dispatch(fetchCountries())
   }
+
   
   return (
     <div className="NavBar">
@@ -22,6 +25,8 @@ export default function NavBar() {
         <button> New Activity</button>
       </Link>
       <Search />
+      <OrderBy/>
+      <Continent/>
     </div>
   );
 }

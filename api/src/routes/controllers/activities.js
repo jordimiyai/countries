@@ -20,14 +20,23 @@ const createActivity = async function(req, res, next) {
     }
 }
 
+const getActivities = function(req, res, next){
+  try {
+    Activity.findAll()
+    .then((response) => {
+      let activities = response ? response : "No matches found";
+      res.status(200).json(activities);
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 // I created a file with some activities to have preloaded
-const getActivities = function(){
+const getActivitiesForBD = function(){
   let rawdata = fs.readFileSync('activities.json');
   // dar formato y devolver 
   let activities = JSON.parse(rawdata);
-  console.log(activities)
-
   return activities
 }
 
@@ -35,4 +44,5 @@ const getActivities = function(){
 module.exports={
     createActivity,
     getActivities,
+    getActivitiesForBD,
 }

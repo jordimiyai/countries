@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const Joi = require("joi");
 const validator = require('express-joi-validation').createValidator({})
-const { createActivity } = require('./controllers/activities')
+const { createActivity, getActivities } = require('./controllers/activities')
 
 const bodySchema = Joi.object({
   name: Joi.string().min(2).max(30).required(),
@@ -21,5 +21,7 @@ const bodySchema = Joi.object({
 const router = Router();
 
 router.post("/", validator.body(bodySchema), createActivity);
+router.get("/", getActivities);
+
 
 module.exports = router;

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jordimiyai/countries#readme",
   "dependencies": {
-    "concurrently": "^6.4.0"
+    "concurrently": "^6.4.0",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

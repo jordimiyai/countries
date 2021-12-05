@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Country, Activity } = require("../../db");
-const { getActivities } = require("./activities");
+const { getActivitiesForBD } = require("./activities");
 
 
 const getCountriesFromApi = async function () {
@@ -39,7 +39,7 @@ const formatCountries = function (countries) {
 };
 
 const loadActivities = async function(){
-  let activities = getActivities()
+  let activities = getActivitiesForBD()
   activities.map( async function(activ){
     let newActivity = await Activity.create(activ);
     await newActivity.addCountry(activ.countries);
